@@ -30,6 +30,6 @@ jobs:
     - name: Initialize the database
       run: flask db upgrade
     - name: Run the app
-      run: flask run
+      run: flask run &
     - name: Run the tests
       run: pytest tests.py
