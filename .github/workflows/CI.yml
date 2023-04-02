@@ -35,12 +35,5 @@ jobs:
       run:  export FLASK_APP=microblog.py | export FLASK_ENV=development
     - name: Initialize the database
       run: flask db upgrade
-    - name: Run the app
-      run: flask run
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-     - name: Run the tests
-       run: pytest tests.py
+    - name: Run the tests
+      run: pytest tests.py
