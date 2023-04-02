@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-latest, ubuntu-20.04 ]
+        os: [ ubuntu-latest, ubuntu-19.04 ]
         python-version: [ "3.7", "3.8", "3.9" ]
     #runs-on: ubuntu-latest
     steps:
@@ -24,20 +24,28 @@ jobs:
     - name: Create a virtual environment
       run: |
           python3 -m venv venv
-          echo "python3 successfully installed" >> $GITHUB_STEP_SUMMARY
+          echo "python3 successfully installed"
 
     - name:  Activate venv
       run: |
           source venv/bin/activate
-          echo "venv successfully activated" >> $GITHUB_STEP_SUMMARY
+          echo "venv successfully activated"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest
+        echo "Install dependencies"
     - name: Set the environment variables
-      run:  export FLASK_APP=microblog.py | export FLASK_ENV=development
+      run:  |
+        export FLASK_APP=microblog.py
+        export FLASK_ENV=development
+        echo "Set the environment variables"
     - name: Initialize the database
-      run: flask db upgrade
+      run: |
+        flask db upgrade
+        echo "Initialize the database"
     - name: Run the tests
-      run: pytest tests.py
+      run: |
+        pytest tests.py
+        echo "Run the tests"
