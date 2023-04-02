@@ -25,6 +25,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest
     - name: Set the environment variables
       run:  export FLASK_APP=microblog.py | export FLASK_ENV=development
     - name: Initialize the database
