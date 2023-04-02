@@ -19,8 +19,11 @@ jobs:
 
     - name: Create a virtual environment
       run: python3 -m venv venv
+          echo "python3 successfully installed"
+
     - name:  Activate venv
       run: source venv/bin/activate
+          echo "venv successfully activated"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
