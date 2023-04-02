@@ -18,11 +18,13 @@ jobs:
         python-version: "3.9"
 
     - name: Create a virtual environment
-      run: python3 -m venv venv
+      run: |
+          python3 -m venv venv
           echo "python3 successfully installed"
 
     - name:  Activate venv
-      run: source venv/bin/activate
+      run: |
+          source venv/bin/activate
           echo "venv successfully activated"
     - name: Install dependencies
       run: |
